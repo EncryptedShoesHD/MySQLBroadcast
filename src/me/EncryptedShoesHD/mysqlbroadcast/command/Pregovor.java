@@ -36,20 +36,22 @@ public class Pregovor implements CommandExecutor {
                     }
                 }
             }else if(args[0].equalsIgnoreCase("remove")) {
-                if(args.length == 2) {
-                    if(core.getNumericAPI().isNumeric(args[1])) {
-			int proverbID = Integer.parseInt(args[1]);
-                        if(core.getProverbAPI().existsProverb(proverbID)) {
-                            core.getProverbAPI().removeProverb(proverbID);
-                            cs.sendMessage("§aProverb has been removed successfully.");
+                if(cs.hasPermission("mysqlbroadcast.remove")) {
+                    if(args.length == 2) {
+                        if(core.getNumericAPI().isNumeric(args[1])) {
+                            int proverbID = Integer.parseInt(args[1]);
+                            if(core.getProverbAPI().existsProverb(proverbID)) {
+                                core.getProverbAPI().removeProverb(proverbID);
+                                cs.sendMessage("§aProverb has been removed successfully.");
+                            }else{
+                                cs.sendMessage("§cSorry, but this proverb does not exist.");
+                            }
                         }else{
-                            cs.sendMessage("§cSorry, but this proverb does not exist.");
+                            cs.sendMessage("§cSorry, but your must enter a number as a proverb ID.");
                         }
                     }else{
-			cs.sendMessage("§cSorry, but your must enter a number as a proverb ID.");
+                        cs.sendMessage("§cWrong usage. Please use /pregovor <add/remove> <pregovor/id>. ID should only be used whenever removing a proverb.");
                     }
-                }else{
-                    cs.sendMessage("§cWrong usage. Please use /pregovor <add/remove> <pregovor/id>. ID should only be used whenever removing a proverb.");
                 }
             }
         }
