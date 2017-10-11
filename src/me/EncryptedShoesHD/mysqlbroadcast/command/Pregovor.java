@@ -5,6 +5,7 @@
  */
 package me.EncryptedShoesHD.mysqlbroadcast.command;
 
+import java.nio.charset.Charset;
 import me.EncryptedShoesHD.mysqlbroadcast.MySQLBroadcast;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -29,10 +30,11 @@ public class Pregovor implements CommandExecutor {
                         msg += " " + args[i];
                     }
                     msg = msg.replaceFirst(" ", "");
+                    String newMsg = Charset.forName("Encode").encode(msg).toString();
                     if(msg.length()>256) {
                         cs.sendMessage("§cProverbs should only be 256 characters long. Contact a developer to increase the limit.");
                     }else {
-                        core.getProverbAPI().addProverb(msg);
+                        core.getProverbAPI().addProverb(newMsg);
                         cs.sendMessage("§aProverb has been added successfully.");
                     }
                 }
