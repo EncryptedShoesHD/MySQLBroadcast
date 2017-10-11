@@ -1,0 +1,7 @@
+name: MySQLBroadcast
+version: 1.0.0
+author: EncryptedShoesHD
+main: me.EncryptedShoesHD.mysqlbroadcast.MySQLBroadcast
+commands:  
+  pregovor:
+      description: Dodaj/odstrani pregovor.
