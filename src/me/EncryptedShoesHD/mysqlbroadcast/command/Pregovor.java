@@ -28,6 +28,7 @@ public class Pregovor implements CommandExecutor {
                     for(int i = 1; i < args.length; i++) {
                         msg += " " + args[i];
                     }
+                    msg = msg.replaceFirst(" ", "");
                     if(msg.length()>256) {
                         cs.sendMessage("§cProverbs should only be 256 characters long. Contact a developer to increase the limit.");
                     }else {
